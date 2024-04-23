@@ -1,77 +1,396 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello, World! HTML Page</title>
+<html>
+    <head>
+        <title>
+            Assignment 1
+        </title>
+        <style>
+            span.specialText {
+                color:black;
+                font-family:Ariel;
+                font-size:100%;
+            }
+            h1 {
+                font-weight: bold;
+            }
+            
+            dt {
+                font-weight: bold;
+            }
+            #nameX, #modulex, #replaceX, #messageX {
+                color:red;
+            }
+        </style>
+        
+    </head>
+    
+    <body>
+        <h4>
+            Part 1:
+        </h4>
+        <table style = "border:1px solid black; border-spacing:0.5px; font-family: arial;" border = "1" width = "600" >
+            <tr style = "background-color:#deeaf6; font-size:120" height= "50">
+                <th colspan = "3"><b>CSIT128: Assignment 1</b></th>
+                <th><b>test</b></th>
+            </tr>
+            <tr style = "font-size:15px" height = "40">
+                <td width = "25%" rowspan = "3">Student Number / Name / Email</td>
+                <td width = "15%"> UOW ID 1</td>
+                <td width = "25%"> Name 1</td>
+                <td>name1@something.com</td>
+            </tr>
+            <tr style = "font-size:15px" height = "40">
+                <td>UOW ID 2</td>
+                <td>Name 2</td>
+                <td>name2@something.com</td>
+            </tr>
+            <tr style = "font-size:15px" height = "40">
+                <td>UOW ID 3</td>
+                <td>Name 3</td>
+                <td>name3@something.com</td>
+            </tr>
+            
+        </table>
+        <hr>
+        <h1> Part 2: Hello World program in different languages </h1>
+        
+        <ul>
+            <a href="#C++"> <li>C++</li></a>
+            <a href="#C#"> <li>C#</li></a>
+            <a href="#Python"> <li>Python</li></a>
+            <a href="#HTML"> <li>HTML</li></a>
+        </ul>
+        
+        <hr>
+        
+        <h3 id = "C++">C++</h3>
+        
+        <table border=0 width="40%">
+            <td><img src="CPP.png" height="100" width="100" alt="C++ Logo"></td>
+            <td>
+                <pre>
+                    <code>
+                        #include &lt;iostream&gt;
+                        void main( ) {
+                        cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; endl;
+                        }
+                    </code>
+                </pre>
+            </td>
+        </table>
+        
+        <hr>
+        
+        <h3 id = "C#">C#</h3>
+        
+        <table border=0 width="60%">
+            <td><img src="CS.png" height="100" width="100" alt="C# Logo"></td>
+            <td>
+                <pre>
+                    <code>
+                        using System;
+                        
+                        class Program
+                        {
+                        static void Main ()
+                        {
+                        Console.WriteLine("Hello, World!")
+                        }
+                        }
+                    </code>
+                </pre>
+            </td>
+        </table>
+        
+        <hr>
+        
+        <h3 id = "Python">Python</h3>
+        
+        <table border=0 width="40%">
+            <td><img src="Python-Language.jpg" height="100" width="100" alt="Python Logo"></td>
+            <td>
+                <pre>
+                    <code>
+                        # Hello World program in Python
+                        print("Hello World!")
+                    </code>
+                </pre>
+            </td>
+        </table>
+        
+        <hr>
+        
+        <h3 id = "HTML">HTML</h3>
+        
+        <table border =0 width="30%">
+            <td><img src="HTML.jpg" height="100" width="100" alt="HTML Logo"></td>
+            <td>
+                <pre>
+                    <code>
+                        &lthtml&gt
+                        &lthead&gt      
+                        &lttitle&gtHello&lt/title&gt
+                        &lt/head&gt
+                        &ltbody&gt
+                        Hello World!
+                        &lt/body&gt
+                        &lt/html&gt
+                    </code>
+                </pre>
+            </td>
+        </table>
+        <hr>
+        <body>
+            <h1>Part 3:University policies and services</h1>
+            <dl>
+                <dt>PLAGIARISM</dt>
+                <dd>
+                    Plagiarism is treated seriously. If we suspect any work is copied, all students involved are likely to receive
+                    zero for the entire assignment. Plagiarism has led to students being expelled from the University.
+                    <br/>
+                    Please click
+                    <a href="https://www.uow.edu.au/student/support-services/learning-development/plagiarism/" target="_blank">here</a> 
+                    to read more about the plagiarism.
+                </dd>
+                
+                <br/>
+                
+                <dt>ACADEMIC CONSIDERATION</dt>
+                <dd>
+                    We know that life isn't perfect and there may be a time when you can't hand in an assignment on time, or make it to a class or 
+                    an exam. If you find yourself in a situation like this, you may be eligible for Academic Consideration. Academic Consideration
+                    is designed to help students when they are sick, injured, or where a serious, unplanned situation has occurred that has affected
+                    their ability to study.
+                    <br />
+                    Please click 
+                    <a href="https://www.uow.edu.au/student/admin/academic-consideration/portal/" target="_blank">here</a>
+                    to read more about academic consideration.
+                </dd>
+                
+                <br />
+                
+                <dt>STUDENT SUPPORT ADVISERS</dt>
+                <dd>
+                    If you have an issue or a problem that is affecting your study, then the Student Support Advisers may be able to help. 
+                    There are Student Support Advisers available to assist students who are studying at all UOW Campuses and in all UOW Faculties.
+                    <br />
+                    Please click
+                    <a href="https://www.uow.edu.au/student/support-services/advisers/" target="_blank">here</a>
+                    to read more about Student Support Advisers.
+                    <br />
+                    <br />
+                    Student Support Adviser contact details for Faculty of Engineering and Information Sciences:
+                    <table border="1">
+                        <tr>
+                            <td>
+                                <b>Ann-Maree Smith</b>
+                                <br/> Bld 40:133, Wollongong 
+                                <br/> Campus
+                                <br/> (02)4221 4714
+                                <br/> Mon-Fri
+                                <br/> ams@uow.edu.au
+                            </td>
+                            <td>
+                                <b>Mitz Perez</b>
+                                <br/> Bld 4:105, Wollongong
+                                <br/> Campus
+                                <br/> (02)4221 3833
+                                <br/> Mon-Fri
+                                <br/> mperez@uow.edu.au 
+                            </td>
+                        </tr>
+                    </table>
+                </dd>
+                
+                <br/>
+                
+                <dt>DISABILITY SERVICES</dt>
+                <dd>
+                    Disability Services provide advice and support for students with a disability or health condition. 
+                    Our aim is to ensure students with a disability realise their full academic potential. 
+                    We also provide support for those who are the primary carers for those with a medical condition or
+                    disability.
+                    <br/>
+                    Please click <a href="https://www.uow.edu.au/student/support-services/disability/" target="_blank">here</a>
+                    read more about Disability Services.
+                </dd>
+            </dl>
+        <hr>
+        
+        <form action="https://translate.google.com" method="get" onreset = "currentDate()">
+        <table style = "border:1px solid black; border-spacing:0.5px; font-family:arial;" border = "1" width = "500">
+            <td>
+                Part 4:
+            </td>
+            <tr>
+                <td>
+                    Name: 
+                    <br>
+                    <input type = "text" size = "30" onblur = "validateName()" id = "name"><span id = "nameX"></span>
+                    <br>
+                    Module Code: 
+                    <br>
+                    <input type = "text" id = "module" onblur="validateModule()" size = "30"><span id = "modulex"></span>
+                    <br>
+                    Current Date: 
+                    <br>
+                    <input type = "text" id = "date" size = "30" readonly><br>
+                </td>
+            </tr>
+                <tr>
+                    <td>
+                    Message: <br>
+                    <textarea name ="text" rows = "3" cols = "20" id = "message" onblur = "validateMessage()">Hello 202204</textarea><span id = "messageX"></span> <br>
+                    Find: 
+                    <input type = "text" name = "find" id = "find" size = "15" onchange = "replaceEnable()"><br>
+                    Replace:
+                    <input type = "text" name = "replace" id = "replace" size = "15"><br>
+                    <br>
+                    <button type = "button" style = "height:20px; width:150px;" onclick = "replaceMessage()">
+                        Find & Replace
+                    </button><span id = "timesReplaced"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    Source Language
+                    <select id = "lang" name = "sl">
+                        <option value = "en" selected>English</option>
+                        <option value = "ms">Malay</option>
+                        <option value = "ja">Japanese</option>
+                        <option value = "ko">Korean</option>
+                    </select>
+                    <br>
+                    Target Language
+                    <input type="radio" name="tl" value="en" checked>English
+                    <input type="radio" name="tl" value="zh-CN">Chinese
+                    <input type="radio" name="tl" value="ms">Malay
+                    <input type="radio" name="tl" value="ja">Japanese
+                    <input type="radio" name="tl" value="ko">Korean
+                    <br>
+                    <input type = "submit" value = "Translate">
+                    <input type = "reset" value = "Reset">
+                    </td>
+                </tr>
+        </table>
+        </form>
+        
+    </body>
+    <script>
+        function isEmpty(input) {
+            if (input == null || input.trim() == "")
+                {
+                    return true;
+                }
+            else {
+                return false;
+            }
+            
+        }
+        
+        function validateName() {
+            var nama = document.getElementById("name").value;
+            
+            if (isEmpty(nama))
+                {
+                    document.getElementById("nameX").innerHTML = "Name must be filled out.";
+                }
+            else if (!/^[A-Za-z\W]{1,}$/.test(nama)){
+                document.getElementById("nameX").innerHTML = "Name is not allowed to have numerical values";
+            }
+            else {
+                document.getElementById("nameX").innerHTML = "";
+            }
+        }
+        
+        function validateModule() {
+            var mod = document.getElementById("module").value;
+            if (isEmpty(mod)) {
+                document.getElementById("modulex").innerHTML = "Module must be filled out";
+            } else if (!/^[0-5]{3}[a-z]{3}$/.test(mod)){
+                document.getElementById("modulex").innerHTML = "Module code must start with 3 digits & end with 3 lower case characters";
+            }
+            else {
+                document.getElementById("modulex").innerHTML = "";
+            }
+        }
+        
+        function currentDate() {
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            
+            var now = new Date();
+            var d = now.getDay();
+            var day = days[now.getDay()];
+            var mon = months[now.getMonth()];
+            var yr = now.getFullYear().toString().slice(-2);
+            var hr = now.getHours();
+            var min = now.getMinutes();
+            
+            var ampm = hr >= 12? "PM" : "AM";
+            var hr12 = hr%12;
+            hr12 = hr12 || 12;
+            
+            var formattedDate = now.getDate() + " " + mon + " " + yr + " " + day + " " + hr12 + ":" + (min < 10 ? "0" : "") + min + ampm;
+            document.getElementById("date").defaultValue = formattedDate;
+        }
+        
+        function validateMessage() {
+            var mes = document.getElementById("message").value;
+            
+            if (isEmpty(mes))
+                {
+                    document.getElementById("messageX").innerHTML = "Name must be filled out.";
+                }
+            else {
+                document.getElementById("messageX").innerHTML = "";
+            }
+        }
+        function replaceEnable(){
+            var ifFind = document.getElementById("find").value; 
+            if (isEmpty(ifFind)) {
+                replace.disabled = true;
+            }
+            else {
+                replace.disabled = false;
+            }
+        }
+        let success = 0;
+        
+        function replaceMessage(){
+            var message = document.getElementById("message").value;
+            var findID = document.getElementById("find").value;
+            var replace = document.getElementById("replace").value;
+            
+            var newRegex = new RegExp("\\b" + findID + "\\b", "gi");
+            var ifFound = message.match(newRegex);
+            
+            if (!isEmpty(message) && !isEmpty(findID) && !isEmpty(replace))
+                {
+                    if (ifFound != null)
+                        {
+                            success++;
+                            document.getElementById("message").value = message.replace(newRegex, replace);
+                            document.getElementById("timesReplaced").innerHTML = "Replaced " + success + " times";
+                            document.getElementById("replaceX").innerHTML = "";
+                        }
+                    else
+                        {
+                            document.getElementById("timesReplaced").innerHTML = "";
+                            document.getElementById("replaceX").innerHTML = "Word not found";
+                        }
+                }
+            else 
+                {
+                    document.getElementById("timesReplaced").innerHTML = "";
+                    document.getElementById("replaceX").innerHTML = "Please fill in the box";
+                }
+        }
+        replaceEnable();
+        currentDate();
+    </script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: left;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            font-family: 'Times New Roman', Times, serif, sans-serif;
-            font-weight: bolder;
-            color: #333;
-        }
-        h2{
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        p {
-            color: #666;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
 
     </style>
-      <script>
-        // JavaScript code
-        function showAlert() {
-            alert('Button was clicked!');
-        }
-    </script>
-</head>
-<body>
-    <!-- Part1 -->
-    <div>
-        "HELLO World"
 
-    </div>
-
-    <!-- Part2 -->
-    <div>
-
-    </div>
-
-    <!-- Part3 -->
-    <div>
-        <h1>
-            Part 3: University policies and services
-        </h1>
-        <h2>
-            PLAGIARISM
-            <span>Plagiarism is treated seriously. If we suspect any work is copied, all students involved are likely to receive zero for the entire assignment. Plagiarism has led to students being expelled from the University. Please click here to read more about Plagiarism.</span>
-        </h2>
-        <h2>
-            ACADEMIC CONSIDERATION
-            <span></span>
-        </h2>
-        <h2>
-            STUDENT SUPPORT ADVISERS
-            <span></span>
-        </h2>
-        <h2>
-            DISABILITY SERVICES
-            <span></span>
-        </h2>
-        
-    </div>
- </body>
 </html>
