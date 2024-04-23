@@ -29,6 +29,9 @@
         border: none;
         cursor: pointer;
       }
+      .errorMessage {
+        color: red;
+      }
     </style>
     <script>
       // JavaScript code
@@ -164,5 +167,136 @@
         >
       </div>
     </div>
+    <br />
+    <div>
+      <form action="handle_login" method="post">
+        Username:<br />
+        <input
+          oninput="validateNameTextBox(this.value.trim(),this)"
+          type="text"
+          name="username"
+          size="30"
+        /><span id="errorMessageNameTextBox" class="errorMessage"></span><br />
+        Module Code:<br />
+        <input
+          oninput="validateModuleCodeTextBox(this.value.trim(),this)"
+          type="text"
+          name="moduleCode"
+          size="30"
+        /><span id="errorMessageModuleCodeText" class="errorMessage"></span
+        ><br />
+      </form>
+    </div>
   </body>
 </html>
+<script>
+  function valid() {
+    console.log('dfsf');
+  }
+  function validateNameTextBox(text, nameTextBox) {
+    var regex = /[0-9]/;
+    var errorMessageNameTextBox = document.getElementById(
+      'errorMessageNameTextBox',
+    );
+    if (text.trim() === '') {
+      errorMessageNameTextBox.textContent = '\u26A0 Name cannot be empty.';
+      nameTextBox.focus();
+      return;
+    }
+
+    // Check if the text box contains numbers
+    if (regex.test(text)) {
+      errorMessageNameTextBox.textContent =
+        '\u26A0 Name cannot contain numbers.';
+      nameTextBox.focus();
+      return;
+    }
+
+    // Clear error message if validation passes
+    errorMessageNameTextBox.textContent = '';
+  }
+
+  function validateModuleCodeTextBox(text, ModuleCodeTextBox) {
+    var errorMessageModuleCodeText = document.getElementById(
+      'errorMessageModuleCodeText',
+    );
+    if (text.trim() === '') {
+      errorMessageModuleCodeText.textContent =
+        '\u26A0 Module Code cannot be empty.';
+      ModuleCodeTextBox.focus();
+      return;
+    }
+    if (/[^a-z]/.test(text)) {
+      //if first three characters contain anything other than lowercase letters, will trigger error
+
+      errorMessageModuleCodeText.textContent =
+        '\u26A0 Error, module code must start with and contain only 3 lowercase letters';
+      ModuleCodeTextBox.focus();
+      return;
+    }
+    if (text.length > 3 && /^[a-z]{3}[^0-9]*$/.test(text)) {
+      errorMessageModuleCodeText.textContent =
+        '\u26A0 Error, module number needed';
+      ModuleCodeTextBox.focus();
+      return;
+    }
+    if (text.charAt(3) == '0' && text.length > 3) {
+      errorMessageModuleCodeText.textContent =
+        '\u26A0 Error, module number must not start with 0';
+      ModuleCodeTextBox.focus();
+      return;
+    }
+    if (
+      (!/^[0-9]{3}$/.test(text.slice(-3)) && text.length == 6) ||
+      text.length > 6
+    ) {
+      errorMessageModuleCodeText.textContent =
+        '\u26A0 Error, module number must end with 3 numbers';
+      ModuleCodeTextBox.focus();
+      return;
+    }
+    errorMessageModuleCodeText.textContent = '';
+  }
+
+  //   //initial load of DOM
+  //   document.addEventListener('DOMContentLoaded', function () {
+  //     console.log('fuck you');
+  //     var nameTextBox = document.getElementById('name');
+  //     var errorMessageNameTextBox = document.getElementById(
+  //       'errorMessageNameTextBox',
+  //     );
+
+  //     // Regular expression to check for numbers
+  //     var regex = /[0-9]/;
+
+  //     // Function to validate the text box content
+  //     function validateTextBox() {
+  //       // Check if the text box is empty
+  //       if (nameTextBox.value.trim() === '') {
+  //         errorMessageNameTextBox.textContent = '\u26A0Text box cannot be empty.';
+  //         nameTextBox.focus();
+  //         return;
+  //       }
+
+  //       // Check if the text box contains numbers
+  //       if (regex.test(nameTextBox.value)) {
+  //         errorMessageNameTextBox.textContent =
+  //           '\u26A0Text box cannot contain numbers.';
+  //         nameTextBox.focus();
+  //         return;
+  //       }
+
+  //       // Clear error message if validation passes
+  //       errorMessageNameTextBox.textContent = '';
+  //     }
+
+  //     // Add event listener to validate text box content on change
+  //     nameTextBox.addEventListener('input', validateTextBox);
+  //   });
+
+  //event listener for name input
+  addEventListener('input', (event) => {});
+  function handle_login() {
+    alert('Hi');
+  }
+</script>
