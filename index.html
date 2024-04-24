@@ -22,15 +22,20 @@
       p {
         color: #666;
       }
-      button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-      }
       .errorMessage {
         color: red;
+      }
+      input {
+        border: 2px solid rgb(85, 85, 85);
+      }
+
+      /* Custom border color for focused state */
+      input:focus {
+        border: 2px solid rgb(85, 85, 85);
+        outline: none;
+      }
+      mark {
+        background-color: yellow;
       }
     </style>
     <script>
@@ -168,6 +173,7 @@
       </div>
     </div>
     <br />
+    <!--part 4-->
     <div>
       <form action="handle_login" method="post">
         Username:<br />
@@ -179,12 +185,71 @@
         /><span id="errorMessageNameTextBox" class="errorMessage"></span><br />
         Module Code:<br />
         <input
-          oninput="validateModuleCodeTextBox(this.value.trim(),this)"
+          onchange="validateModuleCodeTextBox(this.value.trim(),this)"
           type="text"
           name="moduleCode"
           size="30"
         /><span id="errorMessageModuleCodeText" class="errorMessage"></span
         ><br />
+        Date:<br />
+
+        <input type="text" id="dateTimeInput" size="30" readonly />
+        <br />
+        <table border="1">
+          <tr>
+            <td>Message</td>
+            <td>Find and Replace</td>
+          </tr>
+          <tr>
+            <td>
+              <textarea
+                rows="3"
+                cols="20"
+                oninput="validateTextArea(this.value.trim())"
+                id="messageTextArea"
+              >
+"Test 202404"</textarea
+              >
+              <div>
+                <span id="errorMessageTextArea" class="errorMessage"></span>
+              </div>
+            </td>
+            <td>
+              <div style="display: inline-block">
+                <span style="text-align: right"> Find:</span>
+
+                <input
+                  oninput="findMatches(this)"
+                  type="text"
+                  name="findBox"
+                  size="20"
+                  id="findTextBox"
+                />
+                <span
+                  id="matchesFoundSpan"
+                  style="color: gray; font-size: 10px"
+                ></span>
+              </div>
+
+              <br />
+              <span> Replace: </span>
+              <input
+                id="replaceTextBox"
+                type="text"
+                name="findBox"
+                size="20"
+                disabled="true"
+              />
+              <button
+                disabled="true"
+                id="findAndReplaceButton"
+                onclick="findAndReplace(document.getElementById('findTextBox'),document.getElementById('messageTextArea'),document.getElementById('replaceTextBox'))"
+              >
+                Find and Replace</button
+              ><span id="replaceCountSpan"></span>
+            </td>
+          </tr>
+        </table>
       </form>
     </div>
   </body>
@@ -194,6 +259,7 @@
     console.log('dfsf');
   }
   function validateNameTextBox(text, nameTextBox) {
+    //oninput evenet allows the form to be very responsive to changes.
     var regex = /[0-9]/;
     var errorMessageNameTextBox = document.getElementById(
       'errorMessageNameTextBox',
@@ -201,6 +267,7 @@
     if (text.trim() === '') {
       errorMessageNameTextBox.textContent = '\u26A0 Name cannot be empty.';
       nameTextBox.focus();
+      nameTextBox.style.border = '2px solid red';
       return;
     }
 
@@ -209,14 +276,17 @@
       errorMessageNameTextBox.textContent =
         '\u26A0 Name cannot contain numbers.';
       nameTextBox.focus();
+      nameTextBox.style.border = '2px solid red';
       return;
     }
 
     // Clear error message if validation passes
+    nameTextBox.style.border = '2px solid black';
     errorMessageNameTextBox.textContent = '';
   }
 
   function validateModuleCodeTextBox(text, ModuleCodeTextBox) {
+    //this will be onchange event, this is because if i want to check every single time user types in a character, there will be a ton of cases to check.
     var errorMessageModuleCodeText = document.getElementById(
       'errorMessageModuleCodeText',
     );
@@ -224,79 +294,136 @@
       errorMessageModuleCodeText.textContent =
         '\u26A0 Module Code cannot be empty.';
       ModuleCodeTextBox.focus();
+      ModuleCodeTextBox.style.border = '2px solid red';
       return;
     }
-    if (/[^a-z]/.test(text)) {
-      //if first three characters contain anything other than lowercase letters, will trigger error
+    if (!/^[a-z]{3}[0][1-9]{2}$/.test(text)) {
+      errorMessageModuleCodeText.textContent =
+        '\u26A0 Error, module code must start with 3 lowercase letters, followed by 3 numbers, the number cannot start with 0';
+      ModuleCodeTextBox.focus();
+      ModuleCodeTextBox.style.border = '2px solid red';
+      return;
+    }
 
-      errorMessageModuleCodeText.textContent =
-        '\u26A0 Error, module code must start with and contain only 3 lowercase letters';
-      ModuleCodeTextBox.focus();
-      return;
-    }
-    if (text.length > 3 && /^[a-z]{3}[^0-9]*$/.test(text)) {
-      errorMessageModuleCodeText.textContent =
-        '\u26A0 Error, module number needed';
-      ModuleCodeTextBox.focus();
-      return;
-    }
-    if (text.charAt(3) == '0' && text.length > 3) {
-      errorMessageModuleCodeText.textContent =
-        '\u26A0 Error, module number must not start with 0';
-      ModuleCodeTextBox.focus();
-      return;
-    }
-    if (
-      (!/^[0-9]{3}$/.test(text.slice(-3)) && text.length == 6) ||
-      text.length > 6
-    ) {
-      errorMessageModuleCodeText.textContent =
-        '\u26A0 Error, module number must end with 3 numbers';
-      ModuleCodeTextBox.focus();
-      return;
-    }
+    ModuleCodeTextBox.style.border = '2px solid black';
     errorMessageModuleCodeText.textContent = '';
   }
 
-  //   //initial load of DOM
-  //   document.addEventListener('DOMContentLoaded', function () {
-  //     console.log('fuck you');
-  //     var nameTextBox = document.getElementById('name');
-  //     var errorMessageNameTextBox = document.getElementById(
-  //       'errorMessageNameTextBox',
-  //     );
-
-  //     // Regular expression to check for numbers
-  //     var regex = /[0-9]/;
-
-  //     // Function to validate the text box content
-  //     function validateTextBox() {
-  //       // Check if the text box is empty
-  //       if (nameTextBox.value.trim() === '') {
-  //         errorMessageNameTextBox.textContent = '\u26A0Text box cannot be empty.';
-  //         nameTextBox.focus();
-  //         return;
-  //       }
-
-  //       // Check if the text box contains numbers
-  //       if (regex.test(nameTextBox.value)) {
-  //         errorMessageNameTextBox.textContent =
-  //           '\u26A0Text box cannot contain numbers.';
-  //         nameTextBox.focus();
-  //         return;
-  //       }
-
-  //       // Clear error message if validation passes
-  //       errorMessageNameTextBox.textContent = '';
-  //     }
-
-  //     // Add event listener to validate text box content on change
-  //     nameTextBox.addEventListener('input', validateTextBox);
-  //   });
-
-  //event listener for name input
-  addEventListener('input', (event) => {});
-  function handle_login() {
-    alert('Hi');
+  function validateTextArea(text) {
+    if (text.trim().length == 0) {
+      document.getElementById('errorMessageTextArea').textContent =
+        'Message cannot be empty';
+      return;
+    }
+    document.getElementById('errorMessageTextArea').textContent = '';
   }
+  function returnMatches(findText, message) {
+    // Create a RegExp object,use 'gi' for global and case-insensitive search use '\\b' + searchText + '\\b' if you want to match whole words only
+
+    var regex = new RegExp(findText, 'g');
+    return message.match(regex) || [];
+  }
+  function findMatches(inputElement) {
+    var textAreaElement = document.getElementById('messageTextArea');
+    var matchesFoundSpan = document.getElementById('matchesFoundSpan');
+    var replaceElement = document.getElementById('replaceTextBox');
+    var findAndReplaceButton = document.getElementById('findAndReplaceButton');
+    var findText = inputElement.value.trim(); // Convert input to lowercase
+    var message = textAreaElement.value.trim();
+    if (findText.length == 0) {
+      matchesFoundSpan.innerHTML = '';
+      replaceElement.disabled = true;
+      findAndReplaceButton.disabled = true;
+      return;
+    }
+    matchesFound = returnMatches(findText, message);
+
+    matchesFoundSpan.innerHTML = matchesFound.length
+      ? 'Matches Found: ' + matchesFound.length
+      : 'No matches';
+
+    replaceElement.disabled = matchesFound.length > 0 ? false : true;
+    findAndReplaceButton.disabled = matchesFound.length > 0 ? false : true;
+  }
+
+  function findAndReplace(findElement, textAreaElement, replaceElement) {
+    event.preventDefault();
+    var matchesFound = returnMatches(
+      findElement.value.trim(),
+      textAreaElement.value,
+    );
+    textAreaElement.value = textAreaElement.value.replaceAll(
+      findElement.value.trim(),
+      replaceElement.value.trim(),
+    );
+    findElement.value = '';
+    replaceElement.value = '';
+    document.getElementById('replaceCountSpan').textContent =
+      matchesFound.length + ' item(s) replaced';
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    //for date time input
+    var dateTimeInput = document.getElementById('dateTimeInput');
+
+    // Function to update the input value with current date and time
+    function updateDateTime() {
+      var currentDate = new Date();
+      var dayNames = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+      ];
+      var monthNames = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ];
+
+      var dayName = dayNames[currentDate.getDay()];
+      var monthName = monthNames[currentDate.getMonth()];
+
+      var hour = currentDate.getHours();
+      var minute = currentDate.getMinutes();
+      var amOrPm = hour >= 12 ? 'PM' : 'AM';
+      hour = hour % 12;
+      hour = hour ? hour : 12;
+
+      var formattedDate =
+        currentDate.getDate() +
+        ' ' +
+        monthName +
+        ' ' +
+        currentDate.getFullYear() +
+        ' ' +
+        dayName +
+        ' ' +
+        hour +
+        ':' +
+        (minute < 10 ? '0' : '') +
+        minute +
+        ' ' +
+        amOrPm;
+
+      dateTimeInput.value = formattedDate;
+    }
+
+    // Update the input value initially
+    updateDateTime();
+
+    // Update the input value every minute
+    setInterval(updateDateTime, 60000); // 60000 milliseconds = 1 minute
+  });
 </script>
