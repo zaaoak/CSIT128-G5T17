@@ -37,6 +37,11 @@
       mark {
         background-color: yellow;
       }
+      .grid {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        grid-gap: 10px;
+      }
     </style>
     <script>
       // JavaScript code
@@ -195,7 +200,7 @@
 
         <input type="text" id="dateTimeInput" size="30" readonly />
         <br />
-        <table border="1">
+        <table border="1" width="50%">
           <tr>
             <td>Message</td>
             <td>Find and Replace</td>
@@ -215,20 +220,43 @@
               </div>
             </td>
             <td>
-              <div style="display: inline-block">
+              <div class="grid">
                 <span style="text-align: right"> Find:</span>
-
-                <input
-                  oninput="findMatches(this)"
-                  type="text"
-                  name="findBox"
-                  size="20"
-                  id="findTextBox"
-                />
-                <span
-                  id="matchesFoundSpan"
-                  style="color: gray; font-size: 10px"
-                ></span>
+                <div>
+                  <input
+                    oninput="findMatches(this)"
+                    type="text"
+                    name="findBox"
+                    id="findTextBox"
+                  />
+                  <span
+                    id="matchesFoundSpan"
+                    style="
+                      color: rgb(43, 17, 17);
+                      font-size: 12px;
+                      width: 100px;
+                    "
+                  ></span>
+                </div>
+                <span style="text-align: right"> Replace: </span>
+                <div>
+                  <input
+                    id="replaceTextBox"
+                    type="text"
+                    name="findBox"
+                    disabled="true"
+                  /><span></span>
+                </div>
+                <br />
+                <div>
+                  <button
+                    disabled="true"
+                    id="findAndReplaceButton"
+                    onclick="findAndReplace(document.getElementById('findTextBox'),document.getElementById('messageTextArea'),document.getElementById('replaceTextBox'))"
+                  >
+                    Find and Replace</button
+                  ><span id="replaceCountSpan"></span>
+                </div>
               </div>
 
               <br />
@@ -359,6 +387,7 @@
     );
     findElement.value = '';
     replaceElement.value = '';
+    replaceElement.disabled = true;
     document.getElementById('replaceCountSpan').textContent =
       matchesFound.length + ' item(s) replaced';
   }
