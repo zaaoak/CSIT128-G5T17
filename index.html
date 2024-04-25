@@ -42,6 +42,14 @@
         grid-template-columns: 30% 70%;
         grid-gap: 10px;
       }
+      .background {
+        background-image: url('Background.png'); /* Replace 'path/to/your/image.jpg' with your image path */
+        background-repeat: repeat;
+        /* Optionally, you can set a background color in case the image doesn't cover the entire element */
+        background-color: #ffffff; /* Replace #ffffff with your desired background color */
+        /* Set the size of the background image */
+        /* background-size: auto; */ /* Default value: auto */
+      }
     </style>
     <script>
       // JavaScript code
@@ -50,7 +58,7 @@
       }
     </script>
   </head>
-  <body>
+  <body class="background">
     <!-- Part1 -->
     <div>
       <table border="1" width="100%">
@@ -180,7 +188,7 @@
     <br />
     <!--part 4-->
     <div>
-      <form action="handle_login" method="post">
+      <form id="myform" action="https://translate.google.com" method="get">
         Username:<br />
         <input
           oninput="validateNameTextBox(this.value.trim(),this)"
@@ -210,10 +218,11 @@
               <textarea
                 rows="3"
                 cols="20"
+                name="text"
                 oninput="validateTextArea(this.value.trim())"
                 id="messageTextArea"
               >
-"Test 202404"</textarea
+Test 202404</textarea
               >
               <div>
                 <span id="errorMessageTextArea" class="errorMessage"></span>
@@ -252,33 +261,33 @@
                   <button
                     disabled="true"
                     id="findAndReplaceButton"
-                    onclick="findAndReplace(document.getElementById('findTextBox'),document.getElementById('messageTextArea'),document.getElementById('replaceTextBox'))"
+                    onclick="findAndReplace(document.getElementById('findTextBox'),document.getElementById('messageTextArea'),document.getElementById('replaceTextBox'),this)"
                   >
                     Find and Replace</button
                   ><span id="replaceCountSpan"></span>
                 </div>
               </div>
-
-              <br />
-              <span> Replace: </span>
-              <input
-                id="replaceTextBox"
-                type="text"
-                name="findBox"
-                size="20"
-                disabled="true"
-              />
-              <br />
-              <button
-                disabled="true"
-                id="findAndReplaceButton"
-                onclick="findAndReplace(document.getElementById('findTextBox'),document.getElementById('messageTextArea'),document.getElementById('replaceTextBox'))"
-              >
-                Find and Replace</button
-              ><span id="replaceCountSpan"></span>
             </td>
           </tr>
         </table>
+        <br />
+        Source Language
+        <select id="lang" name="sl">
+          <option value="en" selected>English</option>
+          <option value="ms">Malay</option>
+          <option value="ja">Japanese</option>
+          <option value="ko">Korean</option>
+        </select>
+        <br />
+        Target Language
+        <input type="radio" name="tl" value="en" checked />English
+        <input type="radio" name="tl" value="zh-CN" />Chinese
+        <input type="radio" name="tl" value="ms" />Malay
+        <input type="radio" name="tl" value="ja" />Japanese
+        <input type="radio" name="tl" value="ko" />Korean
+        <br />
+        <input type="submit" value="Translate" />
+        <input type="reset" value="Reset" />
       </form>
     </div>
   </body>
@@ -373,9 +382,41 @@
 
     replaceElement.disabled = matchesFound.length > 0 ? false : true;
     findAndReplaceButton.disabled = matchesFound.length > 0 ? false : true;
+    document.getElementById('replaceCountSpan').textContent = '';
+
+    const text = message;
+
+    // Reset any previous highlighting
+    resetHighlight(textAreaElement);
+
+    // Find all occurrences of the search term
+    let index = text.indexOf(findText.toLowerCase());
+    console.log(index);
+    while (index !== -1) {
+      // Highlight the found match
+      highlightText(textAreaElement, index, index + findText.length);
+
+      // Find the next occurrence
+      index = text.toLowerCase().indexOf(findText.toLowerCase(), index + 1);
+    }
+    function highlightText(textarea, startIndex, endIndex) {
+      // Set the selection range to highlight the text
+      textarea.setSelectionRange(startIndex, endIndex);
+      console.log(startIndex, endIndex);
+    }
+
+    function resetHighlight(textarea) {
+      // Remove any previous highlighting by setting selection range to the end
+      textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+    }
   }
 
-  function findAndReplace(findElement, textAreaElement, replaceElement) {
+  function findAndReplace(
+    findElement,
+    textAreaElement,
+    replaceElement,
+    findAndReplaceButton,
+  ) {
     event.preventDefault();
     var matchesFound = returnMatches(
       findElement.value.trim(),
@@ -388,67 +429,73 @@
     findElement.value = '';
     replaceElement.value = '';
     replaceElement.disabled = true;
+    findAndReplaceButton.disabled = true;
     document.getElementById('replaceCountSpan').textContent =
       matchesFound.length + ' item(s) replaced';
+
+    document.getElementById('matchesFoundSpan').textContent = '';
   }
+  function updateDateTime() {
+    console.log('updateDateTime');
+    var dateTimeInput = document.getElementById('dateTimeInput');
+    var currentDate = new Date();
+    var dayNames = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ];
+    var monthNames = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+
+    var dayName = dayNames[currentDate.getDay()];
+    var monthName = monthNames[currentDate.getMonth()];
+
+    var hour = currentDate.getHours();
+    var minute = currentDate.getMinutes();
+    var amOrPm = hour >= 12 ? 'PM' : 'AM';
+    var seconds = currentDate.getSeconds();
+    hour = hour % 12;
+    hour = hour ? hour : 12;
+
+    var formattedDate =
+      currentDate.getDate() +
+      ' ' +
+      monthName +
+      ' ' +
+      currentDate.getFullYear() +
+      ' ' +
+      dayName +
+      ' ' +
+      hour +
+      ':' +
+      (minute < 10 ? '0' : '') +
+      minute +
+      ' ' +
+      amOrPm;
+    dateTimeInput.defaultValue = formattedDate;
+    dateTimeInput.value = formattedDate;
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     //for date time input
-    var dateTimeInput = document.getElementById('dateTimeInput');
 
     // Function to update the input value with current date and time
-    function updateDateTime() {
-      var currentDate = new Date();
-      var dayNames = [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-      ];
-      var monthNames = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ];
-
-      var dayName = dayNames[currentDate.getDay()];
-      var monthName = monthNames[currentDate.getMonth()];
-
-      var hour = currentDate.getHours();
-      var minute = currentDate.getMinutes();
-      var amOrPm = hour >= 12 ? 'PM' : 'AM';
-      hour = hour % 12;
-      hour = hour ? hour : 12;
-
-      var formattedDate =
-        currentDate.getDate() +
-        ' ' +
-        monthName +
-        ' ' +
-        currentDate.getFullYear() +
-        ' ' +
-        dayName +
-        ' ' +
-        hour +
-        ':' +
-        (minute < 10 ? '0' : '') +
-        minute +
-        ' ' +
-        amOrPm;
-
-      dateTimeInput.value = formattedDate;
-    }
 
     // Update the input value initially
     updateDateTime();
