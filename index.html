@@ -64,6 +64,11 @@
         top: 0; /* Align to the top */
         left: 0; /* Align to the left */
       }
+      .tdHeader {
+        text-align: center;
+        text-decoration: underline;
+        font-weight: bold;
+      }
     </style>
     <script>
       // JavaScript code
@@ -77,26 +82,35 @@
     <div>
       <table border="1" width="100%">
         <tr>
-          <th width="50%" align="center" colspan="3">CSIT128: Assignment</th>
-          <th width="60%">Group G5T17</th>
+          <th
+            width="50%"
+            colspan="3"
+            class="tdHeader"
+            style="background-color: aquamarine"
+          >
+            CSIT128: Assignment
+          </th>
+          <th width="60%" class="tdHeader" style="background-color: aquamarine">
+            Group G5T17
+          </th>
         </tr>
         <tr>
           <td rowspan="4" width="20%">Student Number / Name / Email</td>
         </tr>
         <tr>
-          <td width="30%" align="center">10258635</td>
-          <td width="30%" align="center">Nicholas Ho</td>
-          <td width="30%" align="center">nhzyho001@mymail.sim.edu.sg</td>
+          <td width="30%">10258635</td>
+          <td width="30%">Nicholas Ho</td>
+          <td width="30%">nhzyho001@mymail.sim.edu.sg</td>
         </tr>
         <tr>
-          <td width="30%" align="center">103433445</td>
-          <td width="30%" align="center">Ron Lim</td>
-          <td width="30%" align="center">zxlim@mymail.sim.edu.sg</td>
+          <td width="30%">103433445</td>
+          <td width="30%">Ron Lim</td>
+          <td width="30%">zxlim@mymail.sim.edu.sg</td>
         </tr>
         <tr>
-          <td width="30%" align="center">10254333</td>
-          <td width="30%" align="center">Ayldritch</td>
-          <td width="30%" align="center">ayldritch@mymail.sim.edu.sg</td>
+          <td width="30%">10254333</td>
+          <td width="30%">Ayldritch</td>
+          <td width="30%">ayldritch@mymail.sim.edu.sg</td>
         </tr>
       </table>
     </div>
@@ -327,9 +341,11 @@
         <br />
         <table border="1" width="65%">
           <tr>
-            <td>Message</td>
-            <td style="width: fit-content">Find and Replace</td>
-            <td>Matched Preview</td>
+            <td class="tdHeader">Message</td>
+            <td style="width: fit-content" class="tdHeader">
+              Find and Replace
+            </td>
+            <td class="tdHeader">Matched Preview</td>
           </tr>
           <tr>
             <td>
