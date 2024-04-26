@@ -15,7 +15,7 @@
         font-weight: bolder;
         color: #333;
       }
-      h2 {
+      h2 h3 h4 {
         font-family: 'Courier New', Courier, monospace;
       }
 
@@ -50,8 +50,19 @@
         /* Set the size of the background image */
         /* background-size: auto; */ /* Default value: auto */
       }
-      .message::selection {
-        background-color: yellow;
+      .image-container {
+        width: 30%; /* Set the width of the div */
+        position: relative; /* Set position to relative to handle absolute positioning of img */
+        overflow: hidden; /* Hide any overflow content */
+      }
+
+      .image-container img {
+        width: 100%; /* Make the img width 100% of the container */
+        height: 100%; /* Maintain aspect ratio */
+        object-fit: contain; /* Cover: Scale the image to be as large as possible while maintaining aspect ratio */
+        position: absolute; /* Position the img absolutely within the container */
+        top: 0; /* Align to the top */
+        left: 0; /* Align to the left */
       }
     </style>
     <script>
@@ -78,20 +89,123 @@
           <td width="30%" align="center">nhzyho001@mymail.sim.edu.sg</td>
         </tr>
         <tr>
-          <td width="30%" align="center">10258635</td>
-          <td width="30%" align="center">Nicholas Ho</td>
-          <td width="30%" align="center">nhzyho001@mymail.sim.edu.sg</td>
+          <td width="30%" align="center">103433445</td>
+          <td width="30%" align="center">Ron Lim</td>
+          <td width="30%" align="center">zxlim@mymail.sim.edu.sg</td>
         </tr>
         <tr>
-          <td width="30%" align="center">10258635</td>
-          <td width="30%" align="center">Nicholas Ho</td>
-          <td width="30%" align="center">nhzyho001@mymail.sim.edu.sg</td>
+          <td width="30%" align="center">10254333</td>
+          <td width="30%" align="center">Ayldritch</td>
+          <td width="30%" align="center">ayldritch@mymail.sim.edu.sg</td>
         </tr>
       </table>
     </div>
 
     <!-- Part2 -->
-    <div></div>
+    <div>
+      <hr />
+      <h1>Part 2: Hello World program in different languages</h1>
+
+      <ul>
+        <a href="#C++"> <li>C++</li></a>
+        <a href="#C#"> <li>C#</li></a>
+        <a href="#Python"> <li>Python</li></a>
+        <a href="#HTML"> <li>HTML</li></a>
+      </ul>
+
+      <hr />
+
+      <h3 id="C++">C++</h3>
+
+      <table border="0" width="60%">
+        <td class="image-container">
+          <img src="CPP.png" height="100" width="100" alt="C++ Logo" />
+        </td>
+        <td>
+          <pre>
+                  <code>
+                      #include &lt;iostream&gt;
+                      void main( ) {
+                      cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; endl;
+                      }
+                  </code>
+              </pre>
+        </td>
+      </table>
+
+      <hr />
+
+      <h3 id="C#">C#</h3>
+
+      <table border="0" width="60%">
+        <td class="image-container">
+          <img src="CS.png" height="70" width="100" alt="C# Logo" />
+        </td>
+        <td>
+          <pre>
+                  <code>
+                      using System;
+                      
+                      class Program
+                      {
+                      static void Main ()
+                      {
+                      Console.WriteLine("Hello, World!")
+                      }
+                      }
+                  </code>
+              </pre>
+        </td>
+      </table>
+
+      <hr />
+
+      <h3 id="Python">Python</h3>
+
+      <table border="0" width="60%">
+        <td class="image-container">
+          <img
+            src="Python-Language.jpg"
+            height="100"
+            width="100"
+            alt="Python Logo"
+          />
+        </td>
+        <td>
+          <pre>
+                  <code>
+                      # Hello World program in Python
+                      print("Hello World!")
+                  </code>
+              </pre>
+        </td>
+      </table>
+
+      <hr />
+
+      <h3 id="HTML">HTML</h3>
+
+      <table border="0" width="60%">
+        <td class="image-container">
+          <img src="HTML.jpg" height="100" width="100" alt="HTML Logo" />
+        </td>
+        <td>
+          <pre>
+                  <code>
+                      &lthtml&gt
+                      &lthead&gt      
+                      &lttitle&gtHello&lt/title&gt
+                      &lt/head&gt
+                      &ltbody&gt
+                      Hello World!
+                      &lt/body&gt
+                      &lt/html&gt
+                  </code>
+              </pre>
+        </td>
+      </table>
+      <hr />
+    </div>
 
     <!-- Part3 -->
     <div>
