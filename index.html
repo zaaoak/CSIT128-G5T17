@@ -50,6 +50,9 @@
         /* Set the size of the background image */
         /* background-size: auto; */ /* Default value: auto */
       }
+      .message::selection {
+        background-color: yellow;
+      }
     </style>
     <script>
       // JavaScript code
@@ -208,10 +211,11 @@
 
         <input type="text" id="dateTimeInput" size="30" readonly />
         <br />
-        <table border="1" width="50%">
+        <table border="1" width="65%">
           <tr>
             <td>Message</td>
-            <td>Find and Replace</td>
+            <td style="width: fit-content">Find and Replace</td>
+            <td>Matched Preview</td>
           </tr>
           <tr>
             <td>
@@ -221,6 +225,7 @@
                 name="text"
                 oninput="validateTextArea(this.value.trim())"
                 id="messageTextArea"
+                class="message"
               >
 Test 202404</textarea
               >
@@ -229,7 +234,7 @@ Test 202404</textarea
               </div>
             </td>
             <td>
-              <div class="grid">
+              <div class="grid" style="width: 470px">
                 <span style="text-align: right"> Find:</span>
                 <div>
                   <input
@@ -267,6 +272,9 @@ Test 202404</textarea
                   ><span id="replaceCountSpan"></span>
                 </div>
               </div>
+            </td>
+            <td style="vertical-align: top; text-align: left">
+              <span id="matchedPreviewElement"></span>
             </td>
           </tr>
         </table>
@@ -353,6 +361,7 @@ Test 202404</textarea
         'Message cannot be empty';
       return;
     }
+    findMatches(document.getElementById('findTextBox'));
     document.getElementById('errorMessageTextArea').textContent = '';
   }
   function returnMatches(findText, message) {
@@ -361,12 +370,14 @@ Test 202404</textarea
     var regex = new RegExp(findText, 'g');
     return message.match(regex) || [];
   }
+
   function findMatches(inputElement) {
+    //whenever findInputTextBox is changed, program will find matches in text area
     var textAreaElement = document.getElementById('messageTextArea');
     var matchesFoundSpan = document.getElementById('matchesFoundSpan');
     var replaceElement = document.getElementById('replaceTextBox');
     var findAndReplaceButton = document.getElementById('findAndReplaceButton');
-    var findText = inputElement.value.trim(); // Convert input to lowercase
+    var findText = inputElement.value.trim();
     var message = textAreaElement.value.trim();
     if (findText.length == 0) {
       matchesFoundSpan.innerHTML = '';
@@ -384,31 +395,20 @@ Test 202404</textarea
     findAndReplaceButton.disabled = matchesFound.length > 0 ? false : true;
     document.getElementById('replaceCountSpan').textContent = '';
 
-    const text = message;
+    // Get the content of the span element
+    const spanContent = message;
 
-    // Reset any previous highlighting
-    resetHighlight(textAreaElement);
+    // Create a regular expression pattern to match the keyword
 
-    // Find all occurrences of the search term
-    let index = text.indexOf(findText.toLowerCase());
-    console.log(index);
-    while (index !== -1) {
-      // Highlight the found match
-      highlightText(textAreaElement, index, index + findText.length);
+    // Replace the matched keyword with <mark> tags around it
+    const highlightedContent = spanContent.replaceAll(
+      findText,
+      `<mark>${findText}</mark>`,
+    );
 
-      // Find the next occurrence
-      index = text.toLowerCase().indexOf(findText.toLowerCase(), index + 1);
-    }
-    function highlightText(textarea, startIndex, endIndex) {
-      // Set the selection range to highlight the text
-      textarea.setSelectionRange(startIndex, endIndex);
-      console.log(startIndex, endIndex);
-    }
-
-    function resetHighlight(textarea) {
-      // Remove any previous highlighting by setting selection range to the end
-      textarea.setSelectionRange(textarea.value.length, textarea.value.length);
-    }
+    // Update the content of the span element with the highlighted text
+    document.getElementById('matchedPreviewElement').innerHTML =
+      highlightedContent;
   }
 
   function findAndReplace(
@@ -434,6 +434,7 @@ Test 202404</textarea
       matchesFound.length + ' item(s) replaced';
 
     document.getElementById('matchesFoundSpan').textContent = '';
+    document.getElementById('matchedPreviewElement').innerHTML = '';
   }
   function updateDateTime() {
     console.log('updateDateTime');
