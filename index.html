@@ -1,124 +1,637 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hello, World! HTML Page</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: left;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            font-family: 'Times New Roman', Times, serif, sans-serif;
-            font-weight: bolder;
-            color: #333;
-        }
-        h2{
-            font-family: 'Courier New', Courier, monospace;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        text-align: left;
+        background-color: #f4f4f4;
+      }
+      h1 {
+        font-family: 'Times New Roman', Times, serif, sans-serif;
+        font-weight: bolder;
+        color: #333;
+      }
+      h2 h3 h4 {
+        font-family: 'Courier New', Courier, monospace;
+      }
 
-        p {
-            color: #666;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
+      p {
+        color: #666;
+      }
+      .errorMessage {
+        color: red;
+      }
+      input {
+        border: 2px solid rgb(85, 85, 85);
+      }
 
+      /* Custom border color for focused state */
+      input:focus {
+        border: 2px solid rgb(85, 85, 85);
+        outline: none;
+      }
+      mark {
+        background-color: yellow;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        grid-gap: 10px;
+      }
+      .background {
+        background-image: url('Background.png'); /* Replace 'path/to/your/image.jpg' with your image path */
+        background-repeat: repeat;
+        /* Optionally, you can set a background color in case the image doesn't cover the entire element */
+        background-color: #ffffff; /* Replace #ffffff with your desired background color */
+        /* Set the size of the background image */
+        /* background-size: auto; */ /* Default value: auto */
+      }
+      .image-container {
+        width: 30%; /* Set the width of the div */
+        position: relative; /* Set position to relative to handle absolute positioning of img */
+        overflow: hidden; /* Hide any overflow content */
+      }
+
+      .image-container img {
+        width: 100%; /* Make the img width 100% of the container */
+        height: 100%; /* Maintain aspect ratio */
+        object-fit: contain; /* Cover: Scale the image to be as large as possible while maintaining aspect ratio */
+        position: absolute; /* Position the img absolutely within the container */
+        top: 0; /* Align to the top */
+        left: 0; /* Align to the left */
+      }
+      .tdHeader {
+        text-align: center;
+        text-decoration: underline;
+        font-weight: bold;
+      }
     </style>
-      <script>
-        // JavaScript code
-        function showAlert() {
-            alert('Button was clicked!');
-        }
+    <script>
+      // JavaScript code
+      function showAlert() {
+        alert('Button was clicked!');
+      }
     </script>
-</head>
-<body>
+  </head>
+  <body class="background">
     <!-- Part1 -->
     <div>
-        <table border="1" width="100%">
-            <tr>
-                <th width="50%" align="center" colspan="3">
-                    CSIT128: Assignment
-                </th>
-                <th width="60%">
-                    Group G5T17
-                </th>
-            </tr>
-            <tr>
-                <td rowspan="4" width="20%">
-                    Student Number / Name / Email
-                </td>
-            </tr>
-            <tr>
-                <td width="30%" align="center">
-                    10258635
-                </td>
-                <td width="30%" align="center">
-                    Nicholas Ho
-                </td>
-                <td width="30%" align="center">
-                    nhzyho001@mymail.sim.edu.sg
-                </td>
-            </tr>
-            <tr>
-                <td width="30%" align="center">
-                    10258635
-                </td>
-                <td width="30%" align="center">
-                    Nicholas Ho
-                </td>
-                <td width="30%" align="center">
-                    nhzyho001@mymail.sim.edu.sg
-                </td>
-            </tr>
-            <tr>
-                <td width="30%" align="center">
-                    10258635
-                </td>
-                <td width="30%" align="center">
-                    Nicholas Ho
-                </td>
-                <td width="30%" align="center">
-                    nhzyho001@mymail.sim.edu.sg
-                </td>
-            </tr>
-        </table>
-
+      <table border="1" width="100%">
+        <tr>
+          <th
+            width="50%"
+            colspan="3"
+            class="tdHeader"
+            style="background-color: aquamarine"
+          >
+            CSIT128: Assignment
+          </th>
+          <th width="60%" class="tdHeader" style="background-color: aquamarine">
+            Group G5T17
+          </th>
+        </tr>
+        <tr>
+          <td rowspan="4" width="20%">Student Number / Name / Email</td>
+        </tr>
+        <tr>
+          <td width="30%">10258635</td>
+          <td width="30%">Nicholas Ho</td>
+          <td width="30%">nhzyho001@mymail.sim.edu.sg</td>
+        </tr>
+        <tr>
+          <td width="30%">103433445</td>
+          <td width="30%">Ron Lim</td>
+          <td width="30%">zxlim@mymail.sim.edu.sg</td>
+        </tr>
+        <tr>
+          <td width="30%">10254333</td>
+          <td width="30%">Ayldritch</td>
+          <td width="30%">ayldritch@mymail.sim.edu.sg</td>
+        </tr>
+      </table>
     </div>
 
     <!-- Part2 -->
     <div>
+      <hr />
+      <h1>Part 2: Hello World program in different languages</h1>
 
+      <ul>
+        <a href="#C++"> <li>C++</li></a>
+        <a href="#C#"> <li>C#</li></a>
+        <a href="#Python"> <li>Python</li></a>
+        <a href="#HTML"> <li>HTML</li></a>
+      </ul>
+
+      <hr />
+
+      <h3 id="C++">C++</h3>
+
+      <table border="0" width="60%">
+        <td class="image-container">
+          <img src="CPP.png" height="100" width="100" alt="C++ Logo" />
+        </td>
+        <td>
+          <pre>
+                  <code>
+                      #include &lt;iostream&gt;
+                      void main( ) {
+                      cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; endl;
+                      }
+                  </code>
+              </pre>
+        </td>
+      </table>
+
+      <hr />
+
+      <h3 id="C#">C#</h3>
+
+      <table border="0" width="60%">
+        <td class="image-container">
+          <img src="CS.png" height="70" width="100" alt="C# Logo" />
+        </td>
+        <td>
+          <pre>
+                  <code>
+                      using System;
+                      
+                      class Program
+                      {
+                      static void Main ()
+                      {
+                      Console.WriteLine("Hello, World!")
+                      }
+                      }
+                  </code>
+              </pre>
+        </td>
+      </table>
+
+      <hr />
+
+      <h3 id="Python">Python</h3>
+
+      <table border="0" width="60%">
+        <td class="image-container">
+          <img
+            src="Python-Language.jpg"
+            height="100"
+            width="100"
+            alt="Python Logo"
+          />
+        </td>
+        <td>
+          <pre>
+                  <code>
+                      # Hello World program in Python
+                      print("Hello World!")
+                  </code>
+              </pre>
+        </td>
+      </table>
+
+      <hr />
+
+      <h3 id="HTML">HTML</h3>
+
+      <table border="0" width="60%">
+        <td class="image-container">
+          <img src="HTML.jpg" height="100" width="100" alt="HTML Logo" />
+        </td>
+        <td>
+          <pre>
+                  <code>
+                      &lthtml&gt
+                      &lthead&gt      
+                      &lttitle&gtHello&lt/title&gt
+                      &lt/head&gt
+                      &ltbody&gt
+                      Hello World!
+                      &lt/body&gt
+                      &lt/html&gt
+                  </code>
+              </pre>
+        </td>
+      </table>
+      <hr />
     </div>
 
     <!-- Part3 -->
     <div>
-        <h1>
-            Part 3: University policies and services
-        </h1>
-        <h2>
-            PLAGIARISM
-            <span>Plagiarism is treated seriously. If we suspect any work is copied, all students involved are likely to receive zero for the entire assignment. Plagiarism has led to students being expelled from the University. Please click here to read more about Plagiarism.</span>
-        </h2>
-        <h2>
-            ACADEMIC CONSIDERATION
-            <span></span>
-        </h2>
-        <h2>
-            STUDENT SUPPORT ADVISERS
-            <span></span>
-        </h2>
-        <h2>
-            DISABILITY SERVICES
-            <span></span>
-        </h2>
-        
+      <h1>Part 3: University policies and services</h1>
+
+      <div>
+        <h2>PLAGIARISM</h2>
+        <span
+          >Plagiarism is treated seriously. If we suspect any work is copied,
+          all students involved are likely to receive zero for the entire
+          assignment. Plagiarism has led to students being expelled from the
+          University. Please click
+          <a
+            href="https://www.uow.edu.au/student/support-services/learning-development/plagiarism/"
+            >here</a
+          >
+          to read more about Plagiarism.</span
+        >
+      </div>
+      <div>
+        <h2>ACADEMIC CONSIDERATION</h2>
+        <span
+          >We know that life isn't perfect and there may be a time when you
+          can't hand in an assignment on time, or make it to class or an exam.
+          If you find youself in a situation like this, you may be eligible for
+          Academic Consideration. Academic Consideration is designed to help
+          students when they are sick, injured, or where a serious, unplanned
+          situation has occurred that has affected their ability to study Please
+          click
+          <a
+            href="https://www.uow.edu.au/student/admin/academic-consideration/portal/"
+            >here</a
+          >
+          to read more about Academic Consideration.</span
+        >
+      </div>
+      <div>
+        <h2>STUDENT SUPPORT ADVISERS</h2>
+        <span style="display: inline-block; margin-bottom: 20px"
+          >If you have an issue or a problem that is affecting your study, then
+          the Student Support Advisers may be able to help. There are Student
+          Support Advisers available to assist students who are studying at all
+          UOW Campuses and in all UOW Faculties. Please click
+          <a href="https://www.uow.edu.au/student/support-services/advisers/"
+            >here</a
+          >
+          to read more about Student Support Advisers.
+        </span>
+        <br />
+        <span style="display: inline-block">
+          Student Support Adviser contact details for Faculty of Engineering and
+          Information Sciences:
+        </span>
+        <table border="2" width="60%">
+          <caption></caption>
+          <tr>
+            <td>
+              <span style="font-weight: bold"> Ann-Maree Smith </span>
+              <br />
+              <span> Bld 40:133, Wollongong </span> <br />
+              <a href="https://www.google.com/maps?q=Bld+40,+Wollongong"
+                >Campus</a
+              >
+              <br />
+              <span> (02) 4221 4714 </span> <br /><span> Mon-Fri </span>
+              <br /><a href="mailto:ams@uow.edu.au">ams@uow.edu.au</a>
+            </td>
+            <td>
+              <span style="font-weight: bold"> Mitz Perez </span>
+              <br />
+              <span> Bld 4:105, Wollongong </span> <br />
+              <a href="https://www.google.com/maps?q=Bld+4,+Wollongong"
+                >Campus</a
+              >
+              <br />
+              <span> (02) 4221 3833 </span> <br /><span> Mon-Fri </span>
+              <br /><a href="mailto:mperez@uow.edu.au">mperez@uow.edu.au</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <h2>DISABILITY SERVICES</h2>
+        <span
+          >Disability Services provide advice and support for students with a
+          disability or health condition. Our aim is to ensure students with a
+          disability realise their full academic potential. We also provide
+          support for those who are the primary carers for those with a medical
+          condition or disability. Please click
+          <a href="https://www.uow.edu.au/student/support-services/disability/"
+            >here</a
+          >
+          to read more about Disability Services.</span
+        >
+      </div>
     </div>
- </body>
+    <br />
+    <!--part 4-->
+    <div>
+      <form id="myform" action="https://translate.google.com" method="get">
+        Username:<br />
+        <input
+          oninput="validateNameTextBox(this.value.trim(),this)"
+          type="text"
+          name="username"
+          size="30"
+        /><span id="errorMessageNameTextBox" class="errorMessage"></span><br />
+        Module Code:<br />
+        <input
+          onchange="validateModuleCodeTextBox(this.value.trim(),this)"
+          type="text"
+          name="moduleCode"
+          size="30"
+        /><span id="errorMessageModuleCodeText" class="errorMessage"></span
+        ><br />
+        Date:<br />
+
+        <input type="text" id="dateTimeInput" size="30" readonly />
+        <br />
+        <table border="1" width="65%">
+          <tr>
+            <td class="tdHeader">Message</td>
+            <td style="width: fit-content" class="tdHeader">
+              Find and Replace
+            </td>
+            <td class="tdHeader">Matched Preview</td>
+          </tr>
+          <tr>
+            <td>
+              <textarea
+                rows="3"
+                cols="20"
+                name="text"
+                oninput="validateTextArea(this.value.trim())"
+                id="messageTextArea"
+                class="message"
+              >
+Test 202404</textarea
+              >
+              <div>
+                <span id="errorMessageTextArea" class="errorMessage"></span>
+              </div>
+            </td>
+            <td>
+              <div class="grid" style="width: 470px">
+                <span style="text-align: right"> Find:</span>
+                <div>
+                  <input
+                    oninput="findMatches(this)"
+                    type="text"
+                    name="findBox"
+                    id="findTextBox"
+                  />
+                  <span
+                    id="matchesFoundSpan"
+                    style="
+                      color: rgb(43, 17, 17);
+                      font-size: 12px;
+                      width: 100px;
+                    "
+                  ></span>
+                </div>
+                <span style="text-align: right"> Replace: </span>
+                <div>
+                  <input
+                    id="replaceTextBox"
+                    type="text"
+                    name="findBox"
+                    disabled="true"
+                  /><span></span>
+                </div>
+                <br />
+                <div>
+                  <button
+                    disabled="true"
+                    id="findAndReplaceButton"
+                    onclick="findAndReplace(document.getElementById('findTextBox'),document.getElementById('messageTextArea'),document.getElementById('replaceTextBox'),this)"
+                  >
+                    Find and Replace</button
+                  ><span id="replaceCountSpan"></span>
+                </div>
+              </div>
+            </td>
+            <td style="vertical-align: top; text-align: left">
+              <span id="matchedPreviewElement"></span>
+            </td>
+          </tr>
+        </table>
+        <br />
+        Source Language
+        <select id="lang" name="sl">
+          <option value="en" selected>English</option>
+          <option value="ms">Malay</option>
+          <option value="ja">Japanese</option>
+          <option value="ko">Korean</option>
+        </select>
+        <br />
+        Target Language
+        <input type="radio" name="tl" value="en" checked />English
+        <input type="radio" name="tl" value="zh-CN" />Chinese
+        <input type="radio" name="tl" value="ms" />Malay
+        <input type="radio" name="tl" value="ja" />Japanese
+        <input type="radio" name="tl" value="ko" />Korean
+        <br />
+        <input type="submit" value="Translate" />
+        <input type="reset" value="Reset" />
+      </form>
+    </div>
+  </body>
 </html>
+<script>
+  function valid() {
+    console.log('dfsf');
+  }
+  function validateNameTextBox(text, nameTextBox) {
+    //oninput evenet allows the form to be very responsive to changes.
+    var regex = /[0-9]/;
+    var errorMessageNameTextBox = document.getElementById(
+      'errorMessageNameTextBox',
+    );
+    if (text.trim() === '') {
+      errorMessageNameTextBox.textContent = '\u26A0 Name cannot be empty.';
+      nameTextBox.focus();
+      nameTextBox.style.border = '2px solid red';
+      return;
+    }
+
+    // Check if the text box contains numbers
+    if (regex.test(text)) {
+      errorMessageNameTextBox.textContent =
+        '\u26A0 Name cannot contain numbers.';
+      nameTextBox.focus();
+      nameTextBox.style.border = '2px solid red';
+      return;
+    }
+
+    // Clear error message if validation passes
+    nameTextBox.style.border = '2px solid black';
+    errorMessageNameTextBox.textContent = '';
+  }
+
+  function validateModuleCodeTextBox(text, ModuleCodeTextBox) {
+    //this will be onchange event, this is because if i want to check every single time user types in a character, there will be a ton of cases to check.
+    var errorMessageModuleCodeText = document.getElementById(
+      'errorMessageModuleCodeText',
+    );
+    if (text.trim() === '') {
+      errorMessageModuleCodeText.textContent =
+        '\u26A0 Module Code cannot be empty.';
+      ModuleCodeTextBox.focus();
+      ModuleCodeTextBox.style.border = '2px solid red';
+      return;
+    }
+    if (!/^[a-z]{3}[0][1-9]{2}$/.test(text)) {
+      errorMessageModuleCodeText.textContent =
+        '\u26A0 Error, module code must start with 3 lowercase letters, followed by 3 numbers, the number cannot start with 0';
+      ModuleCodeTextBox.focus();
+      ModuleCodeTextBox.style.border = '2px solid red';
+      return;
+    }
+
+    ModuleCodeTextBox.style.border = '2px solid black';
+    errorMessageModuleCodeText.textContent = '';
+  }
+
+  function validateTextArea(text) {
+    if (text.trim().length == 0) {
+      document.getElementById('errorMessageTextArea').textContent =
+        'Message cannot be empty';
+      return;
+    }
+    findMatches(document.getElementById('findTextBox'));
+    document.getElementById('errorMessageTextArea').textContent = '';
+  }
+  function returnMatches(findText, message) {
+    // Create a RegExp object,use 'gi' for global and case-insensitive search use '\\b' + searchText + '\\b' if you want to match whole words only
+
+    var regex = new RegExp(findText, 'g');
+    return message.match(regex) || [];
+  }
+
+  function findMatches(inputElement) {
+    //whenever findInputTextBox is changed, program will find matches in text area
+    var textAreaElement = document.getElementById('messageTextArea');
+    var matchesFoundSpan = document.getElementById('matchesFoundSpan');
+    var replaceElement = document.getElementById('replaceTextBox');
+    var findAndReplaceButton = document.getElementById('findAndReplaceButton');
+    var findText = inputElement.value.trim();
+    var message = textAreaElement.value.trim();
+    if (findText.length == 0) {
+      matchesFoundSpan.innerHTML = '';
+      replaceElement.disabled = true;
+      findAndReplaceButton.disabled = true;
+      return;
+    }
+    matchesFound = returnMatches(findText, message);
+
+    matchesFoundSpan.innerHTML = matchesFound.length
+      ? 'Matches Found: ' + matchesFound.length
+      : 'No matches';
+
+    replaceElement.disabled = matchesFound.length > 0 ? false : true;
+    findAndReplaceButton.disabled = matchesFound.length > 0 ? false : true;
+    document.getElementById('replaceCountSpan').textContent = '';
+
+    // Get the content of the span element
+    const spanContent = message;
+
+    // Create a regular expression pattern to match the keyword
+
+    // Replace the matched keyword with <mark> tags around it
+    const highlightedContent = spanContent.replaceAll(
+      findText,
+      `<mark>${findText}</mark>`,
+    );
+
+    // Update the content of the span element with the highlighted text
+    document.getElementById('matchedPreviewElement').innerHTML =
+      highlightedContent;
+  }
+
+  function findAndReplace(
+    findElement,
+    textAreaElement,
+    replaceElement,
+    findAndReplaceButton,
+  ) {
+    event.preventDefault();
+    var matchesFound = returnMatches(
+      findElement.value.trim(),
+      textAreaElement.value,
+    );
+    textAreaElement.value = textAreaElement.value.replaceAll(
+      findElement.value.trim(),
+      replaceElement.value.trim(),
+    );
+    findElement.value = '';
+    replaceElement.value = '';
+    replaceElement.disabled = true;
+    findAndReplaceButton.disabled = true;
+    document.getElementById('replaceCountSpan').textContent =
+      matchesFound.length + ' item(s) replaced';
+
+    document.getElementById('matchesFoundSpan').textContent = '';
+    document.getElementById('matchedPreviewElement').innerHTML = '';
+  }
+  function updateDateTime() {
+    console.log('updateDateTime');
+    var dateTimeInput = document.getElementById('dateTimeInput');
+    var currentDate = new Date();
+    var dayNames = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ];
+    var monthNames = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+
+    var dayName = dayNames[currentDate.getDay()];
+    var monthName = monthNames[currentDate.getMonth()];
+
+    var hour = currentDate.getHours();
+    var minute = currentDate.getMinutes();
+    var amOrPm = hour >= 12 ? 'PM' : 'AM';
+    var seconds = currentDate.getSeconds();
+    hour = hour % 12;
+    hour = hour ? hour : 12;
+
+    var formattedDate =
+      currentDate.getDate() +
+      ' ' +
+      monthName +
+      ' ' +
+      currentDate.getFullYear() +
+      ' ' +
+      dayName +
+      ' ' +
+      hour +
+      ':' +
+      (minute < 10 ? '0' : '') +
+      minute +
+      ' ' +
+      amOrPm;
+    dateTimeInput.defaultValue = formattedDate;
+    dateTimeInput.value = formattedDate;
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    //for date time input
+
+    // Function to update the input value with current date and time
+
+    // Update the input value initially
+    updateDateTime();
+
+    // Update the input value every minute
+    setInterval(updateDateTime, 60000); // 60000 milliseconds = 1 minute
+  });
+</script>
