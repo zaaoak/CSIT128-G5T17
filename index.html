@@ -513,6 +513,7 @@ Test 202404</textarea
       matchesFoundSpan.innerHTML = '';
       replaceElement.disabled = true;
       findAndReplaceButton.disabled = true;
+      document.getElementById('matchedPreviewElement').innerHTML = '';
       return;
     }
     matchesFound = returnMatches(findText, message);
