@@ -421,7 +421,12 @@ Test 202404</textarea
   </body>
 </html>
 <script>
-  function resetForm() {
+  function resetForm() {   document.getElementById(
+      'errorMessageModuleCodeText',
+    ).textContent = ''
+    document.getElementById(
+      'errorMessageNameTextBox',
+    ).textContent = ''
     console.log('dfsf');
   }
   function validateNameTextBox(text, nameTextBox) {
