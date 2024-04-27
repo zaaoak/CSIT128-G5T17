@@ -320,7 +320,7 @@
     <!--part 4-->
     <div>
       <form id="myform" action="https://translate.google.com" method="get">
-        Username:<br />
+        Name:<br />
         <input
           oninput="validateNameTextBox(this.value.trim(),this)"
           type="text"
@@ -335,7 +335,7 @@
           size="30"
         /><span id="errorMessageModuleCodeText" class="errorMessage"></span
         ><br />
-        Date:<br />
+        Current Date:<br />
 
         <input type="text" id="dateTimeInput" size="30" readonly />
         <br />
@@ -410,24 +410,23 @@ Test 202404</textarea
           <option value="en" selected>English</option>
           <option value="ms">Malay</option>
           <option value="ja">Japanese</option>
-          <option value="ko">Korean</option>
         </select>
         <br />
         Target Language
-        <input type="radio" name="tl" value="en" checked />English
-        <input type="radio" name="tl" value="zh-CN" />Chinese
+        <input type="radio" name="tl" value="en" />English
+        <input type="radio" name="tl" value="zh-CN"  checked/>Chinese
         <input type="radio" name="tl" value="ms" />Malay
         <input type="radio" name="tl" value="ja" />Japanese
         <input type="radio" name="tl" value="ko" />Korean
         <br />
-        <input type="submit" value="Translate" />
+        <input type="submit" value="Translate" id="translateBtn" />
         <input type="reset" value="Reset" />
       </form>
     </div>
   </body>
 </html>
 <script>
-  function valid() {
+  function resetForm() {
     console.log('dfsf');
   }
   function validateNameTextBox(text, nameTextBox) {
@@ -462,14 +461,7 @@ Test 202404</textarea
     var errorMessageModuleCodeText = document.getElementById(
       'errorMessageModuleCodeText',
     );
-    if (text.trim() === '') {
-      errorMessageModuleCodeText.textContent =
-        '\u26A0 Module Code cannot be empty.';
-      ModuleCodeTextBox.focus();
-      ModuleCodeTextBox.style.border = '2px solid red';
-      return;
-    }
-    if (!/^[a-z]{3}[0][1-9]{2}$/.test(text)) {
+    if (!/^[a-z]{3}[1-9][0-9]{2}$/.test(text) && text.trim() != '') {
       errorMessageModuleCodeText.textContent =
         '\u26A0 Error, module code must start with 3 lowercase letters, followed by 3 numbers, the number cannot start with 0';
       ModuleCodeTextBox.focus();
