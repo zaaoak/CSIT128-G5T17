@@ -339,13 +339,12 @@
 
         <input type="text" id="dateTimeInput" size="30" readonly />
         <br />
-        <table border="1" width="65%">
+        <table border="1" width="50%">
           <tr>
             <td class="tdHeader">Message</td>
             <td style="width: fit-content" class="tdHeader">
               Find and Replace
             </td>
-            <td class="tdHeader">Matched Preview</td>
           </tr>
           <tr>
             <td>
@@ -402,9 +401,6 @@ Test 202404</textarea
                   ><span id="replaceCountSpan"></span>
                 </div>
               </div>
-            </td>
-            <td style="vertical-align: top; text-align: left">
-              <span id="matchedPreviewElement"></span>
             </td>
           </tr>
         </table>
@@ -513,7 +509,6 @@ Test 202404</textarea
       matchesFoundSpan.innerHTML = '';
       replaceElement.disabled = true;
       findAndReplaceButton.disabled = true;
-      document.getElementById('matchedPreviewElement').innerHTML = '';
       return;
     }
     matchesFound = returnMatches(findText, message);
@@ -526,20 +521,7 @@ Test 202404</textarea
     findAndReplaceButton.disabled = matchesFound.length > 0 ? false : true;
     document.getElementById('replaceCountSpan').textContent = '';
 
-    // Get the content of the span element
-    const spanContent = message;
-
-    // Create a regular expression pattern to match the keyword
-
-    // Replace the matched keyword with <mark> tags around it
-    const highlightedContent = spanContent.replaceAll(
-      findText,
-      `<mark>${findText}</mark>`,
-    );
-
-    // Update the content of the span element with the highlighted text
-    document.getElementById('matchedPreviewElement').innerHTML =
-      highlightedContent;
+   
   }
 
   function findAndReplace(
@@ -565,7 +547,6 @@ Test 202404</textarea
       matchesFound.length + ' item(s) replaced';
 
     document.getElementById('matchesFoundSpan').textContent = '';
-    document.getElementById('matchedPreviewElement').innerHTML = '';
   }
   function updateDateTime() {
     console.log('updateDateTime');
