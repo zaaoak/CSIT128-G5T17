@@ -314,13 +314,14 @@
     <br />
     <!--part 4-->
     <div>
-      <form id="myform" action="https://translate.google.com" method="get">
+      <form id="myform" action="https://translate.google.com" method="get" onreset="resetForm()">
         Name:<br />
         <input
           oninput="validateNameTextBox(this.value.trim(),this)"
           type="text"
           name="username"
           size="30"
+          id="nameTextBox"
         /><span id="errorMessageNameTextBox" class="errorMessage"></span><br />
         Module Code:<br />
         <input
@@ -328,6 +329,7 @@
           type="text"
           name="moduleCode"
           size="30"
+          id="moduleCodeTextBox"
         /><span id="errorMessageModuleCodeText" class="errorMessage"></span
         ><br />
         Current Date:<br />
@@ -408,9 +410,7 @@ Test 202404</textarea
         </select>
         <br />
         Target Language
-        <input type="radio" name="tl" value="en" />English
         <input type="radio" name="tl" value="zh-CN"  checked/>Chinese
-        <input type="radio" name="tl" value="ms" />Malay
         <input type="radio" name="tl" value="ja" />Japanese
         <input type="radio" name="tl" value="ko" />Korean
         <br />
@@ -421,13 +421,19 @@ Test 202404</textarea
   </body>
 </html>
 <script>
-  function resetForm() {   document.getElementById(
-      'errorMessageModuleCodeText',
-    ).textContent = ''
-    document.getElementById(
+  function resetForm() {  
+     document.getElementById('nameTextBox').style.border = '2px solid black'
+  document.getElementById(
       'errorMessageNameTextBox',
-    ).textContent = ''
-    console.log('dfsf');
+    ).textContent = '';
+    validateModuleCodeTextBox('',document.getElementById("moduleCodeTextBox"))
+    document.getElementById('errorMessageTextArea').textContent = '';
+    document.getElementById('translateBtn').disabled = false;
+    document.getElementById('findAndReplaceButton').disabled = true
+    document.getElementById('replaceTextBox').disabled = true
+    document.getElementById('replaceCountSpan').textContent =''
+    document.getElementById('matchesFoundSpan').innerHTML =''
+
   }
   function validateNameTextBox(text, nameTextBox) {
     //oninput evenet allows the form to be very responsive to changes.
@@ -477,10 +483,12 @@ Test 202404</textarea
     if (text.trim().length == 0) {
       document.getElementById('errorMessageTextArea').textContent =
         'Message cannot be empty';
+    document.getElementById('translateBtn').disabled = true;
       return;
     }
     findMatches(document.getElementById('findTextBox'));
     document.getElementById('errorMessageTextArea').textContent = '';
+    document.getElementById('translateBtn').disabled = false
   }
   function returnMatches(findText, message) {
     // Create a RegExp object,use 'gi' for global and case-insensitive search use '\\b' + searchText + '\\b' if you want to match whole words only
@@ -541,7 +549,6 @@ Test 202404</textarea
     document.getElementById('matchesFoundSpan').textContent = '';
   }
   function updateDateTime() {
-    console.log('updateDateTime');
     var dateTimeInput = document.getElementById('dateTimeInput');
     var currentDate = new Date();
     var dayNames = [
